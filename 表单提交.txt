@@ -1,0 +1,45 @@
+表单提交序列化方法：serialize();
+serialize()方法可以通过序列化表单值，创建URL编码文本字符串，序列化的值可以在生成Ajax
+请求时用URL查询字符串。
+注意：只会将“成功的控件”序列化为字符串，如果不使用按钮来提交表单，则不对按钮序列化，
+如果要用表单元素的值包含序列字符串中，元素必须使用name属性。
+例子：
+<form>
+	<input type="text" name="a" value="user1">
+	<input type="text" name="b" value="user2">
+	<input type="text" name="c" value="user3">
+</form>
+
+      $("form").serialize();
+      输出结果：a=user1&b=user2&c=user3
+
+
+submit（）方法：
+$("form").submit(function(){
+ //.....
+ //.....
+})
+
+submit()的阻止方法:
+$("form").submit(function(e){
+ e.preventDefault(); //阻止
+ //.....
+ //.....
+})
+
+map()方法：
+$("input").map(function(){
+  console.log($("this").val());
+});
+输出结果是：user1
+            user2
+            user3
+
+console.log(
+  $("input").map(function(){
+     return $(this).val();
+  }).get().join(",")
+);
+输出结果是：user1,user2,user3
+
+
